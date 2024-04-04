@@ -19,11 +19,6 @@ const initState = [
     text: "할 일 앱 만들어 보기",
     checked: true,
   },
-  {
-    id: 4,
-    text: "리액트 공부하기",
-    checked: false,
-  },
 ];
 
 function App() {
@@ -43,24 +38,10 @@ function App() {
     nextId.current += 1;
   };
 
-  // 삭제 기능
-  const onRemove = id => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
-
-  //토글 기능
-  const onToggle = id => {
-    setTodos(
-      todos.map(todo =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo,
-      ),
-    );
-  };
-
   return (
     <TodoTemplate>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+      <TodoList todos={todos} />
     </TodoTemplate>
   );
 }
